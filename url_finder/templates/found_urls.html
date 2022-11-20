@@ -1,0 +1,11 @@
+<p>Found {{ links|length }} urls on page <b>{{ original_url }}</b></p>
+
+{% if links %}
+    <ul>
+    {% for link in links %}
+        <li><a href="{{ link }}">{{ link }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No links are available.</p>
+{% endif %}
