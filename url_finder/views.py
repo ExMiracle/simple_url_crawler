@@ -33,7 +33,7 @@ def _find_urls(url: str) -> List[str]:
     response = requests.get(url)
     if response.ok:
         soup = BeautifulSoup(response.content, 'html.parser')
-        links = list({link.get('href') for link in soup.find_all('a')})
-        return sorted(links)
+        links = {link.get('href') for link in soup.find_all('a') if link.get('href') is not None}
+        return sorted(list(links))
     # todo: what if there is an error? should return that site is unavailable with a status code
     return []
